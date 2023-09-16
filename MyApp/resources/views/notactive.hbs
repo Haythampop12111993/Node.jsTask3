@@ -1,0 +1,56 @@
+    {{>nav}}
+    <section class="container">
+        <div class="mt-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            ProductName
+                        </th>
+                        <th>
+                            BarCode
+                        </th>
+                        <th>
+                            AboutProduct
+                        </th>
+                        <th>
+                            ProductPrice
+                        </th>
+                        <th>
+                            ProductPriceAfterDiscount
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each notActvprod}}
+                        <tr>
+                            <td>
+                                {{ProductName}}
+                            </td>
+                            <td>
+                                {{barcode}}
+                            </td>
+                            <td>
+                                {{AboutProduct}}
+                            </td>
+                            <td>
+                                {{ProductPrice}}
+                            </td>
+                            <td>
+                                {{ProductPriceAfterDiscount}}
+                            </td>
+                            <td>
+                                {{Status}}
+                            </td>
+                            
+                        </tr>
+                    {{/each}}
+                </tbody>
+                
+            </table>
+        </div>
+    </section>
+    {{>footer}}

@@ -1,0 +1,70 @@
+    {{>nav}}
+    <section class="container">
+        <div class="">
+            <form method="post" action="">
+              <input name="ProductName" class="form-control my-2  " placeholder="ProductName" type="text">
+            <input name="AboutProduct" class="form-control my-2 " placeholder="AboutProduct" type="text">
+            <input name="ProductPrice" class="form-control my-2 " placeholder="ProductPrice" type="text">
+            <input name="ProductPriceAfterDiscount" class="form-control my-2 " placeholder="ProductPrice(AfterDiscount)" type="text">
+            <select  class="form-control" name="Status" id="">
+                <option selected disabled value="">Status</option>
+                <option value="Active">Active</option>
+                <option value="NotActive">NotActive</option>
+            </select>
+            <input class="my-3 btn btn-danger" type="submit" value="ADD">
+            </form>
+        </div>
+        <div class="mt-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            ProductName
+                        </th>
+                        <th>
+                            BarCode
+                        </th>
+                        <th>
+                            AboutProduct
+                        </th>
+                        <th>
+                            ProductPrice
+                        </th>
+                        <th>
+                            ProductPrice(AfterDiscount)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each allProducts}}
+                        <tr>
+                            <td>
+                                {{ProductName}}
+                            </td>
+                            <td>
+                                {{barcode}}
+                            </td>
+                            <td>
+                                {{AboutProduct}}
+                            </td>
+                            <td>
+                                {{ProductPrice}}
+                            </td>
+                            <td>
+                                {{ProductPriceAfterDiscount}}
+                            </td>
+                            <td>
+                                {{Status}}
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    {{>footer}}
