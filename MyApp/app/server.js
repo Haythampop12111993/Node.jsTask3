@@ -1,3 +1,5 @@
+require("../DB/conectWithDb")
+const prodectModel = require("../DB/models/prodect.model")
 const express = require("express");
 const app = express();
 app.use(express.urlencoded({extended:true}))
@@ -13,37 +15,55 @@ app.set("view engine", "hbs")
 app.set("views", myView)
 
 
-app.get("/", (req, res) => {
-    let allProducts = Del.readFromJson()
+app.get("/",async (req, res) => {
+     let allProducts = await prodectModel.find()
     res.render("home", {
         allProducts
     })
 })
-app.post("/", (req, res) => {
+app.post("/",async (req, res) => {
     let Product = { barcode : Date.now(), ...req.body }
-    let allProducts = Del.readFromJson()
-    console.log(allProducts)
-    allProducts.push(Product)
-    Del.writeFromJson(allProducts)
-    res.render("home")
+    try {
+      const addProduct = new prodectModel(Product);
+      await addProduct.save();
+      // res.send(addProduct)
+      res.render("home")
+    }
+    catch (e) {
+      console.log(e.massage)
+    }
+  }
     
- })
-app.get("/active", (req, res) => {
-    allProducts = Del.readFromJson()
-    let product = allProducts.filter((ele) => {
-      return  ele.Status == "Active"
+ )
+app.get("/active", async(req, res) => {
+  try {
+    allProducts = await prodectModel.find()
+    let product = allProducts.filter(ele => {
+      return ele.status == "Active"
     })
     res.render("active", {
-      product
+      product,
     });
+  }
+  catch (e) {
+    console.log(e)
+  }
+    
 })
-app.get("/notactive", (req, res) => {
-  allProducts = Del.readFromJson();
-  let notActvprod = allProducts.filter((ele) => {
-    return ele.Status == "NotActive";
-  });
-  res.render("notactive", {
-    notActvprod,
-  });
+app.get("/notactive",async (req, res) => {
+  try {
+    allProducts = await prodectModel.find()
+    let notActvprod = allProducts.filter((ele) => {
+      return ele.status == "NotActive";  
+      
+    })
+    res.render("notactive", {
+      notActvprod,
+    });
+  }
+  catch (e) {
+    console.log(e)
+  }
+  
 });
 module.exports = app

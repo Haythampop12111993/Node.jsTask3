@@ -2,11 +2,11 @@
     <section class="container">
         <div class="">
             <form method="post" action="">
-              <input name="ProductName" class="form-control my-2  " placeholder="ProductName" type="text">
-            <input name="AboutProduct" class="form-control my-2 " placeholder="AboutProduct" type="text">
-            <input name="ProductPrice" class="form-control my-2 " placeholder="ProductPrice" type="text">
-            <input name="ProductPriceAfterDiscount" class="form-control my-2 " placeholder="ProductPrice(AfterDiscount)" type="text">
-            <select  class="form-control" name="Status" id="">
+              <input name="productName" class="form-control my-2  " placeholder="ProductName" type="text">
+            <input name="aboutProduct" class="form-control my-2 " placeholder="AboutProduct" type="text">
+            <input name="productPrice" class="form-control my-2 " placeholder="ProductPrice" type="text">
+            <input name="productPriceAfterDiscount" class="form-control my-2 " placeholder="ProductPrice(AfterDiscount)" type="text">
+            <select  class="form-control" name="status" id="">
                 <option selected disabled value="">Status</option>
                 <option value="Active">Active</option>
                 <option value="NotActive">NotActive</option>
@@ -42,24 +42,22 @@
                     {{#each allProducts}}
                         <tr>
                             <td>
-                                {{ProductName}}
+                                {{productName}}
                             </td>
                             <td>
                                 {{barcode}}
                             </td>
                             <td>
-                                {{AboutProduct}}
+                                {{aboutProduct}}
                             </td>
                             <td>
-                                {{ProductPrice}}
+                                {{productPrice}}
                             </td>
                             <td>
-                                {{ProductPriceAfterDiscount}}
+                                {{productPriceAfterDiscount}}
                             </td>
                             <td>
-                                {{Status}}
-                            </td>
-                            <td>
+                                {{status}}
                             </td>
                         </tr>
                     {{/each}}
