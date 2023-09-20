@@ -66,4 +66,17 @@ app.get("/notactive",async (req, res) => {
   }
   
 });
+app.get("/changeStatus/:_id", async (req, res) => {
+  try {
+    const productData = await prodectModel.findOne({ _id: req.params._id }).exec();
+    if (productData) {
+      productData.status =
+        productData.status !== "Active" ? "Active" : "NotActive";
+      await productData.save();
+    }
+    res.redirect("/");
+  } catch (e) {
+    console.log(e);
+  }
+});
 module.exports = app
